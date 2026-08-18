@@ -1,0 +1,291 @@
+@use '@angular/material' as mat;
+
+/* =====================================================================
+   MOVE Admin — Stylesheet Global com Sistema de Temas (Claro / Escuro)
+   ---------------------------------------------------------------------*/
+:root {
+  /* === Cores de marca (iguais nos dois temas) === */
+  --tms-primary: #1b305a;
+  --tms-accent: #fbc01a;
+  --tms-primary-blue: #1565C0;
+  --tms-primary-teal: #00695C;
+
+  /* === Texto — tema claro === */
+  --tms-text-strong: #1A1A2E;      /* H1, H2, números em destaque */
+  --tms-text-body: #2C3E50;        /* Corpo, células de tabela */
+  --tms-text-secondary: #5C6370;   /* Subtítulos, metadados */
+  --tms-text-muted: #9E9E9E;       /* Estados vazios, disabled */
+  --tms-text-heading-alt: #1f2937; /* Títulos alternativos */
+  --tms-text-header-cell: #3C4043; /* Cabeçalho de tabela */
+  --tms-text-label: #37474F;       /* Labels, section-titles */
+  --tms-text-on-primary: #ffffff;  /* Texto sobre fundo primário */
+
+  /* === Superfícies — tema claro === */
+  --tms-bg-page: #f5f7fa;          /* Fundo do conteúdo principal */
+  --tms-surface: #ffffff;          /* Cards, modais, tabelas */
+  --tms-surface-alt: #F8F9FA;      /* Cabeçalhos de tabela */
+  --tms-surface-subtle: #F0F4F8;   /* Zonas de upload, HOVER da tabela */
+  --tms-sidebar-bg: #ffffff;       /* Sidebar */
+  --tms-modal-backdrop: rgba(15, 23, 42, 0.5);
+
+  /* === Bordas — tema claro === */
+  --tms-border: #D1D5DB;           /* Borda mais marcada para divisórias */
+  --tms-border-light: #F0F0F0;
+  --tms-border-soft: #e5e7eb;
+  --tms-border-dashed: #BDBDBD;
+
+  /* === Sombras — tema claro === */
+  --tms-shadow-sm: 0 1px 2px rgba(15, 23, 42, .06);
+  --tms-shadow-md: 0 1px 4px rgba(0, 0, 0, .06);
+  --tms-shadow-lg: 0 10px 30px rgba(0, 0, 0, .2);
+
+  /* === Cores semânticas (status) — tema claro === */
+  --tms-success: #2E7D32;     --tms-success-bg: #E8F5E9;
+  --tms-warning: #E65100;     --tms-warning-bg: #FFF3E0;
+  --tms-danger: #C62828;      --tms-danger-bg: #FFEBEE;
+  --tms-info: #1565C0;        --tms-info-bg: #E3F2FD;
+  --tms-purple: #6A1B9A;      --tms-purple-bg: #F3E5F5;
+  --tms-teal: #00695C;        --tms-teal-bg: #E0F2F1;
+  --tms-amber: #b45309;       --tms-amber-bg: #FFF8E1;
+  --tms-rose: #B71C1C;        --tms-rose-bg: #FFCDD2;
+
+  /* === Aliases legados === */
+  --color-primary: var(--tms-primary);
+  --color-bg: var(--tms-bg-page);
+  --color-sidebar-bg: var(--tms-sidebar-bg);
+  --color-border: var(--tms-border-soft);
+  --text-primary: var(--tms-text-strong);
+  --text-secondary: var(--tms-text-secondary);
+}
+
+html.dark-theme {
+  /* === Cores de marca (ajustadas p/ contraste em fundo escuro) === */
+  --tms-primary: #1b305a;
+  --tms-accent: #fbc01a;
+  --tms-primary-blue: #3b82f6;
+  --tms-primary-teal: #14b8a6;
+
+  /* === Texto — tema escuro (claro sobre escuro) === */
+  --tms-text-strong: #FFFFFF;
+  --tms-text-body: #E2E8F0;
+  --tms-text-secondary: #94A3B8;
+  --tms-text-muted: #64748B;
+  --tms-text-heading-alt: #F1F5F9;
+  --tms-text-header-cell: #CBD5E1;
+  --tms-text-label: #CBD5E1;
+  --tms-text-on-primary: #ffffff;
+
+  /* === Superfícies — tema escuro === */
+  --tms-bg-page: #0F172A;
+  --tms-surface: #1E293B;          /* Cards, modais, tabelas */
+  --tms-surface-alt: #162032;      /* Cabeçalhos de tabela */
+  --tms-surface-subtle: #2A364D;   /* HOVER da tabela no escuro */
+  --tms-sidebar-bg: #1A2332;
+  --tms-modal-backdrop: rgba(0, 0, 0, 0.65);
+
+  /* === Bordas — tema escuro === */
+  --tms-border: #334155;           /* Borda mais marcada para divisórias */
+  --tms-border-light: #334155;
+  --tms-border-soft: #1E293B;
+  --tms-border-dashed: #475569;
+
+  /* === Sombras — tema escuro === */
+  --tms-shadow-sm: 0 1px 2px rgba(0, 0, 0, .3);
+  --tms-shadow-md: 0 1px 4px rgba(0, 0, 0, .4);
+  --tms-shadow-lg: 0 10px 30px rgba(0, 0, 0, .5);
+
+  /* === Cores semânticas (status) — tema escuro === */
+  --tms-success: #4ADE80;     --tms-success-bg: rgba(74, 222, 128, .15);
+  --tms-warning: #FB923C;     --tms-warning-bg: rgba(251, 146, 60, .15);
+  --tms-danger: #F87171;      --tms-danger-bg: rgba(248, 113, 113, .15);
+  --tms-info: #60A5FA;        --tms-info-bg: rgba(96, 165, 250, .15);
+  --tms-purple: #C084FC;      --tms-purple-bg: rgba(192, 132, 252, .15);
+  --tms-teal: #2DD4BF;        --tms-teal-bg: rgba(45, 212, 191, .15);
+  --tms-amber: #FBBF24;       --tms-amber-bg: rgba(251, 191, 36, .15);
+  --tms-rose: #F87171;        --tms-rose-bg: rgba(248, 113, 113, .15);
+}
+
+/* =====================================================================
+   BLINDAGEM GLOBAL (Resolve o fundo branco e títulos escuros da Auditoria)
+   ===================================================================== */
+html body {
+  background-color: var(--tms-bg-page) !important;
+  color: var(--tms-text-body) !important;
+  transition: background-color .25s ease, color .25s ease;
+}
+
+html body .table-container,
+html body .card,
+html body .filter-card,
+html body .form-card {
+  background-color: var(--tms-surface) !important;
+  border-color: var(--tms-border) !important;
+}
+
+html body h1, 
+html body h2, 
+html body h3, 
+html body h4,
+html body .page-header h1,
+html body .card-header h3 {
+  color: var(--tms-text-strong) !important;
+}
+
+html body p,
+html body .page-header p {
+  color: var(--tms-text-secondary) !important;
+}
+
+input, select, textarea {
+  background: var(--tms-surface);
+  color: var(--tms-text-body);
+}
+
+* {
+  scrollbar-color: var(--tms-border) transparent;
+}
+
+/* =====================================================================
+   ESTILIZAÇÃO GLOBAL DE TABELAS (SEM ZEBRA, COM DIVISÓRIA E HOVER)
+   ===================================================================== */
+
+html body table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  background-color: var(--tms-surface) !important;
+}
+
+/* Cabeçalho da Tabela */
+html body table thead th {
+  background-color: var(--tms-surface-alt) !important;
+  color: var(--tms-text-header-cell) !important;
+  padding: 14px 16px !important;
+  text-align: left !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  border-bottom: 2px solid var(--tms-border) !important;
+}
+
+/* Linhas da Tabela (Corpo) - Sem zebra e com linha divisória de 2px */
+html body table tbody tr {
+  background-color: var(--tms-surface) !important; /* Fundo contínuo (Sem Zebra) */
+  border-bottom: 2px solid var(--tms-border) !important; /* Divisória bem marcada */
+  transition: background-color 0.2s ease-in-out !important;
+}
+
+html body table tbody tr:last-child {
+  border-bottom: none !important;
+}
+
+/* Efeito Hover (Destaque ao passar o mouse) */
+html body table tbody tr:hover {
+  background-color: var(--tms-surface-subtle) !important;
+}
+
+/* Células de texto */
+html body table tbody td {
+  padding: 14px 16px !important;
+  color: var(--tms-text-body) !important;
+  font-size: 14px !important;
+}
+
+/* Rodapé da Tabela (Onde ficam os Totais) */
+html body table tfoot td {
+  background-color: var(--tms-surface-alt) !important;
+  color: var(--tms-text-strong) !important;
+  padding: 14px 16px !important;
+  font-weight: bold !important;
+  border-top: 2px solid var(--tms-border) !important;
+}
+
+html body table th.num, 
+html body table td.num {
+  text-align: right !important;
+}
+
+html body table td.empty {
+  text-align: center !important;
+  padding: 32px !important;
+  color: var(--tms-text-muted) !important;
+  font-style: italic !important;
+  background-color: var(--tms-surface) !important;
+}
+
+/* =====================================================================
+   COMPONENTES COMPARTILHADOS (stat-card, modais, etc.)
+   ===================================================================== */
+.stat-card {
+  background: var(--tms-surface);
+  border: 1px solid var(--tms-border-soft);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--tms-shadow-md);
+  transition: background-color .25s ease, border-color .25s ease;
+}
+.stat-card .icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: grid; place-items: center; flex-shrink: 0;
+}
+.stat-card .icon mat-icon { font-size: 24px; width: 24px; height: 24px; }
+.stat-card .info { display: flex; flex-direction: column; }
+.stat-card .info .value { font-size: 24px; font-weight: 800; color: var(--tms-text-strong); line-height: 1.1; }
+.stat-card .info .label { font-size: 12px; color: var(--tms-text-secondary); margin-top: 2px; }
+
+/* === Modal === */
+.modal-backdrop {
+  position: fixed; inset: 0; background: var(--tms-modal-backdrop);
+  display: grid; place-items: center; z-index: 100; padding: 16px;
+}
+.modal-card {
+  background: var(--tms-surface); border: 1px solid var(--tms-border);
+  border-radius: 12px; width: 100%; max-width: 520px; max-height: 90vh;
+  overflow-y: auto; box-shadow: var(--tms-shadow-lg);
+  transition: background-color .25s ease, border-color .25s ease;
+}
+.modal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 20px; border-bottom: 1px solid var(--tms-border);
+}
+.modal-header h3 { font-size: 16px; font-weight: 700; color: var(--tms-text-strong); margin: 0; }
+.modal-header button mat-icon { color: var(--tms-text-secondary); }
+.modal-body { padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+.modal-footer {
+  display: flex; justify-content: flex-end; gap: 8px;
+  padding: 12px 20px; border-top: 1px solid var(--tms-border);
+}
+
+.modal-body input, .modal-body select, .modal-body textarea {
+  background: var(--tms-surface); color: var(--tms-text-body);
+  border: 1px solid var(--tms-border); border-radius: 6px;
+  padding: 8px 10px; font-size: 14px; font-family: inherit;
+}
+.modal-body input:focus, .modal-body select:focus, .modal-body textarea:focus {
+  outline: none; border-color: var(--tms-primary);
+}
+.modal-body label {
+  font-size: 12px; font-weight: 600; color: var(--tms-text-label);
+  text-transform: uppercase; letter-spacing: .03em;
+}
+
+/* === Material form fields — coerção para o tema === */
+.dark-theme .mat-mdc-form-field .mdc-notched-outline__leading,
+.dark-theme .mat-mdc-form-field .mdc-notched-outline__notch,
+.dark-theme .mat-mdc-form-field .mdc-notched-outline__trailing {
+  border-color: var(--tms-border) !important;
+}
+.dark-theme .mat-mdc-form-field .mdc-floating-label,
+.dark-theme .mat-mdc-form-field .mat-mdc-form-field-flex .mdc-text-field__input {
+  color: var(--tms-text-body) !important;
+}
+
+.dark-theme .mat-mdc-snack-bar-container {
+  --mdc-snackbar-container-color: var(--tms-surface-alt);
+  --mdc-snackbar-supporting-text-color: var(--tms-text-body);
+}
